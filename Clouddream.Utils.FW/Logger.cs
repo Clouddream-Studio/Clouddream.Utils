@@ -1,4 +1,6 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
+using System.IO;
 using System.Reflection;
 
 public class Logger
@@ -42,7 +44,7 @@ public class Logger
             }
             if (logType != LogType.OnlyConsole)
             {
-                File.AppendAllLines(string.IsNullOrWhiteSpace(logFilePath) ? $"{DateTime.Now:yyyy-MM-dd}" : logFilePath, new[] { $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss} {logLevel}] [{assemblyName} - {methodName}] {message}" });
+                File.AppendAllLines(string.IsNullOrWhiteSpace(logFilePath) ? $"{DateTime.Now:yyyy-MM-dd}" : logFilePath, new[] { $"[{DateTime.Now} {logLevel}] [{assemblyName} - {methodName}] {message}" });
             }
 #if !DEBUG
         }
